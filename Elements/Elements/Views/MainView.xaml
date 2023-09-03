@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="Elements.Views.MainView"
+    Title="Elements" NavigationPage.HasNavigationBar="True">
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding LoadingSelected}"/>
+    </ContentPage.Behaviors>
+    <Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height=".6*"></RowDefinition>
+        <RowDefinition Height="*"></RowDefinition>
+        <RowDefinition Height="1.1*"></RowDefinition>
+        <RowDefinition Height=".8*"></RowDefinition>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    <Image HorizontalOptions="FillAndExpand"
+           VerticalOptions="FillAndExpand"
+           Aspect="AspectFill"
+           Source="Background.png"
+           Grid.Row="0"
+           Grid.Column="0"
+           Grid.RowSpan="4"
+           Grid.ColumnSpan="3"/>
+    <Grid Grid.Row ="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ImageButton 
+            Source="HomeButton"
+            Aspect="AspectFit"
+            BackgroundColor="Transparent"
+            Grid.Row="0"
+            Grid.Column="0"
+            Command="{Binding ArticleSelected}"
+            CommandParameter="Home"/>
+        <ImageButton 
+            Source="MoldButton"
+            Aspect="AspectFit"
+            BackgroundColor="Transparent"
+            Grid.Row="0"
+            Grid.Column="1"
+            Command="{Binding ArticleSelected}"
+            CommandParameter="Mold"/>
+        <ImageButton 
+            Source="RadonButton"
+            Aspect="AspectFit"
+            BackgroundColor="Transparent"
+            Command="{Binding ArticleSelected}"
+            CommandParameter="Radon"
+            Grid.Row="0"
+            Grid.Column="2"/>
+        <ImageButton 
+            Source="ScheduleButton"
+            Aspect="AspectFit"
+            BackgroundColor="Transparent"
+            Grid.Row="0"
+            Grid.Column="3"
+            Command="{Binding ScheduleSelected}"
+            CommandParameter="Schedule"/>
+        <ImageButton 
+            Source ="TermiteButton"
+            Aspect="AspectFit"
+            BackgroundColor="Transparent"
+            Grid.Row="1"
+            Grid.Column="0"
+            Command="{Binding ArticleSelected}"
+            CommandParameter="Termite"/>
+        <ImageButton 
+            Source="PoolButton"
+            Aspect="AspectFit"
+            BackgroundColor="Transparent"
+            Grid.Row="1"
+            Grid.Column="1"
+            Command="{Binding ArticleSelected}"
+            CommandParameter="Pool"/>
+        <ImageButton 
+            Source="WasteButton"
+            Aspect="AspectFit"
+            BackgroundColor="Transparent"
+            Grid.Row="1"
+            Grid.Column="2"
+            Command="{Binding ArticleSelected}"
+            CommandParameter="Waste"/>
+        <ImageButton 
+            Source="ReminderButton"
+            Aspect="AspectFit"
+            BackgroundColor="Transparent"
+            Grid.Row="1"
+            Grid.Column="3"
+            Command="{Binding ReminderSelected}"
+            CommandParameter="Reminder"/>
+        </Grid>
+        <Image 
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
+            Aspect="AspectFit"
+            Source="ElementsLogo.png"
+            Grid.Row="0"
+            Grid.Column="2"/>
+        <Label 
+            Text="&#10;TWO INSPECTORS ON &#10;EVERY INSPECTION!"
+            TextColor="White"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Center"
+            FontSize="Large"
+            Grid.Row="3"
+            Grid.Column ="0"
+            Grid.ColumnSpan="3"/>
+    </Grid>
+</ContentPage>

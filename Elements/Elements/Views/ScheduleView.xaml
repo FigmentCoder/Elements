@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="Elements.Views.ScheduleView"
+    Title="Schedule">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label 
+                Text="Loading..." 
+                HorizontalOptions="Center" 
+                IsVisible="{Binding IsLoading}" />
+            <WebView 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand"
+                Source="https://bluebirddrones.com/schedule/">
+                <WebView.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        EventName="Navigating"
+                        Command="{Binding IsLoadingSelected}"/>
+                    <behaviors:EventToCommandBehavior
+                        EventName="Navigated"
+                        Command="{Binding IsNotLoadingSelected}"/>
+                </WebView.Behaviors>
+            </WebView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

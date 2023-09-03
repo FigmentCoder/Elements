@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Elements.Views.ArticleView"
+    Title="{Binding Article.Title}">
+    <ContentPage.Content>
+        <AbsoluteLayout VerticalOptions="FillAndExpand" 
+                        HorizontalOptions="FillAndExpand">
+            <Image AbsoluteLayout.LayoutFlags="All"
+                   AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                   Source="{Binding Article.ImageName}"
+                   Aspect="AspectFill"/>
+            <CollectionView ItemsSource="{Binding Article.Sections}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <BoxView 
+                                Color="White"
+                                Opacity=".6"
+                                CornerRadius="5"
+                                Grid.RowSpan="2"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="6"/>
+                            <Label 
+                                Text="{Binding Header}" 
+                                TextColor="Black"
+                                FontSize ="Large"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Grid.ColumnSpan="3"/>
+                            <Label 
+                                Text="{Binding Text}"
+                                TextColor="Black"
+                                FontSize="Medium"
+                                Grid.Row="1"
+                                Grid.Column ="1"
+                                Grid.ColumnSpan="4"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

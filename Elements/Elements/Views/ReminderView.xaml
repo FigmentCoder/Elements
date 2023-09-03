@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:forms="clr-namespace:Elements.Forms;assembly=Elements"
+    x:Class="Elements.Views.ReminderView"
+    Title="Reminders"
+    x:Name="pageName">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding LoadingSelected}"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout 
+            VerticalOptions="FillAndExpand" 
+            HorizontalOptions="FillAndExpand">
+            <Label 
+                Text="Loading..." 
+                HorizontalOptions="Center" 
+                IsVisible="{Binding IsLoading}" />
+            <CollectionView ItemsSource="{Binding Reminders, Mode=OneWay}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height=".1*"></RowDefinition>
+                                <RowDefinition Height=".8*"></RowDefinition>
+                                <RowDefinition Height=".1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width=".7*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <BoxView 
+                                Color="DimGray"
+                                Opacity=".6"
+                                CornerRadius="5"
+                                Grid.RowSpan="3"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="6"/>
+                            <Label 
+                                Text="{Binding Title}" 
+                                FontSize ="Medium"
+                                FontAttributes="None"
+                                HorizontalTextAlignment="Start"
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Grid.ColumnSpan="3"/>
+                            <forms:UserSwitch 
+                                ToggledStateFromCode="{Binding IsEnabled, Mode=TwoWay}"
+                                OnColor="Orange"
+                                Grid.Row="1"
+                                Grid.Column ="5">
+                                <Switch.Behaviors>
+                                    <xct:EventToCommandBehavior 
+                                        EventName="UserToggled" 
+                                        Command="{Binding Path=BindingContext.ToggleReminderSelected, 
+                                        Source={x:Reference Name=pageName}}" CommandParameter="{Binding .}"/>
+                                </Switch.Behaviors>
+                            </forms:UserSwitch>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
