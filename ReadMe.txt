@@ -1,4 +1,6 @@
-﻿dotnet add package Microsoft.EntityFrameworkCore.Tools --version 5.0.17
+Proof of concept Mobile Application using Xamarin Forms
+
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 5.0.17
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 5.0.17
 dotnet new tool-manifest
 dotnet tool install --local dotnet-ef --version 5.0.17
